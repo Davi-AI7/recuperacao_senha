@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIAP Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #2c0f26, #4b1036);
+            color: #fff;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #ff1f77;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff1f77;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e3176c;
+        }
+
+        .forgot {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #ff77aa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .success {
+            background-color: rgba(0, 255, 0, 0.3);
+            color: #0f0;
+        }
+
+        .error {
+            background-color: rgba(255, 0, 0, 0.3);
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Revalidação de Acesso</h2>
+        <div class="input-group">
+            <input type="text" id="email" placeholder="E-mail FIAP">
+        </div>
+        <div class="input-group">
+            <input type="password" id="senha" placeholder="Senha">
+        </div>
+        <button class="btn" onclick="validarLogin()">Entrar</button>
+        <a href="#" class="forgot">Esqueci minha senha</a>
+
+        <div id="feedback" class="message"></div>
+    </div>
+
+    <script>
+        function validarLogin() {
+            const email = document.getElementById('email').value;
+            const feedback = document.getElementById('feedback');
+
+            if (!email.includes('@')) {
+                feedback.textContent = 'O e-mail precisa conter "@"!';
+                feedback.className = 'message error';
+            } else {
+                feedback.textContent = 'Senha atualizada com sucesso!';
+                feedback.className = 'message success';
+            }
+
+            feedback.style.display = 'block';
+
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
