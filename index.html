@@ -3,68 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIAP - Revalidação de Acesso</title>
+    <title>Revalidação de Acesso FIAP</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f6fa;
+            background-color: #0f0f0f; /* Preto escuro */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
         }
         .login-container {
-            background-color: #fff;
-            padding: 40px 30px;
+            background-color: #1a1a1a; /* Preto mais claro para o card */
+            padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            width: 350px;
+            box-shadow: 0 0 20px rgba(255, 0, 50, 0.3);
+            width: 300px;
             text-align: center;
         }
-        .login-container img {
-            width: 120px;
+        h2 {
+            color: #ff4d6d; /* Rosa/avermelhado */
             margin-bottom: 20px;
         }
-        h2 {
-            margin-bottom: 25px;
-            color: #1a1a1a;
-        }
-        input[type="text"], input[type="password"] {
+        input[type="email"], input[type="password"] {
             width: 100%;
-            padding: 12px 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
             border-radius: 5px;
-            box-sizing: border-box;
+            border: 1px solid #ff4d6d;
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+        input::placeholder {
+            color: #ff9999; /* Tom rosa mais claro */
         }
         button {
             width: 100%;
-            background-color: #0078d7;
-            color: white;
-            padding: 12px;
-            margin-top: 15px;
+            padding: 10px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            background-color: #ff1a1a; /* Vermelho vibrante */
+            color: #fff;
             font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #005a9e;
+            background-color: #ff4d6d; /* Rosa mais claro no hover */
         }
         .footer {
-            font-size: 12px;
-            color: #888;
             margin-top: 15px;
+            color: #ff9999;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <img src="https://www.fiap.com.br/wp-content/uploads/2020/04/logo-fiap.png" alt="FIAP Logo">
         <h2>Revalidação de Acesso</h2>
         <form>
-            <input type="text" placeholder="E-mail FIAP" required>
+            <input type="email" placeholder="E-mail FIAP" required>
             <input type="password" placeholder="Senha" required>
             <button type="submit">Entrar</button>
         </form>
