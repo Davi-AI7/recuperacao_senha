@@ -1,54 +1,77 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TechCorp Brasil | Revalidação de Acesso</title>
-  <style>
-    body { font-family: Arial, sans-serif; background:#0f172a; margin:0; }
-    .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-    .card { background:#fff; width:100%; max-width:420px; border-radius:16px; box-shadow: 0 10px 30px rgba(0,0,0,.15); padding:28px; }
-    .logo { font-weight:700; font-size:22px; letter-spacing:.3px; color:#0f172a; margin-bottom:4px; }
-    .sub { color:#475569; font-size:14px; margin-bottom:18px; }
-    label { display:block; font-size:12px; color:#334155; margin:12px 0 6px; }
-    input { width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:10px; font-size:14px; }
-    button { width:100%; padding:12px; border:0; border-radius:10px; margin-top:16px; font-size:14px; cursor:pointer; }
-    .primary { background:#0ea5e9; color:#fff; }
-    .muted { color:#475569; font-size:12px; text-align:center; margin-top:12px; }
-    .footer { color:#94a3b8; font-size:11px; text-align:center; margin-top:18px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIAP - Revalidação de Acesso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            background-color: #0078d7;
+            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005a9e;
+        }
+        .footer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="logo">TechCorp Brasil</div>
-      <div class="sub">Revalidação de Acesso</div>
-
-      <form id="login-form">
-        <label for="email">E-mail corporativo</label>
-        <input id="email" type="email" placeholder="nome.sobrenome@techcorp.com.br" required />
-
-        <label for="password">Senha</label>
-        <input id="password" type="password" placeholder="••••••••" required />
-
-        <button class="primary" type="submit">Entrar</button>
-      </form>
-
-      <div class="muted">Dúvidas? suporte@techcorp-br.com</div>
-      <div class="footer">© TechCorp Brasil — 2025</div>
+    <div class="login-container">
+        <img src="https://www.fiap.com.br/wp-content/uploads/2020/04/logo-fiap.png" alt="FIAP Logo">
+        <h2>Revalidação de Acesso</h2>
+        <form>
+            <input type="text" placeholder="E-mail FIAP" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="footer">
+            Dúvidas? suporte@fiap.com.br<br>
+            &copy; FIAP — 2025
+        </div>
     </div>
-  </div>
-
-  <script>
-    // SIMULAÇÃO ÉTICA: não coleta nada. Não enviar para servidor.
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Simulação concluída: nenhum dado foi coletado.');
-      // Para rastrear apenas o clique, você pode substituir por redirecionamento interno seguro:
-      // window.location.href = './simulacao_concluida.html';
-    });
-  </script>
-
-  <!-- AVISO ÉTICO (comentário): uso exclusivo educacional. Nunca colete credenciais reais. -->
 </body>
 </html>
