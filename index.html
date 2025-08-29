@@ -3,74 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revalidação de Acesso FIAP</title>
+    <title>FIAP Login</title>
     <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
         body {
-            background-color: #0f0f0f; /* Preto escuro */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-        .login-container {
-            background-color: #1a1a1a; /* Preto mais claro para o card */
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 50, 0.3);
-            width: 300px;
-            text-align: center;
-        }
-        h2 {
-            color: #ff4d6d; /* Rosa/avermelhado */
-            margin-bottom: 20px;
-        }
-        input[type="email"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ff4d6d;
-            background-color: #2a2a2a;
+            background: linear-gradient(135deg, #2c0f26, #4b1036);
             color: #fff;
         }
-        input::placeholder {
-            color: #ff9999; /* Tom rosa mais claro */
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 350px;
         }
-        button {
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #ff1f77; /* rosa vibrante */
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
+            border-radius: 8px;
             border: none;
-            border-radius: 5px;
-            background-color: #ff1a1a; /* Vermelho vibrante */
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff1f77;
             color: #fff;
             font-size: 16px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s ease;
         }
-        button:hover {
-            background-color: #ff4d6d; /* Rosa mais claro no hover */
+
+        .btn:hover {
+            background-color: #e3176c;
         }
-        .footer {
+
+        .forgot {
+            display: block;
+            text-align: center;
             margin-top: 15px;
-            color: #ff9999;
-            font-size: 12px;
+            color: #ff77aa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Revalidação de Acesso</h2>
-        <form>
-            <input type="email" placeholder="E-mail FIAP" required>
-            <input type="password" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
-        </form>
-        <div class="footer">
-            Dúvidas? suporte@fiap.com.br<br>
-            &copy; FIAP — 2025
+        <div class="input-group">
+            <input type="text" placeholder="E-mail FIAP">
         </div>
+        <div class="input-group">
+            <input type="password" placeholder="Senha">
+        </div>
+        <button class="btn">Entrar</button>
+        <a href="#" class="forgot">Esqueci minha senha</a>
     </div>
 </body>
 </html>
