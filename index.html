@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>FIAP - Portal do Aluno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      /* Fundo com vermelho escuro de cima para baixo */
+      background: linear-gradient(to bottom, #8b0000, #b30000, #e30613);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #ffffff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #e30613;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #e30613;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #e30613;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 12px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #b0040f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginPage">
+    <h2>Portal do Aluno</h2>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Digite sua senha">
+    <button onclick="irParaRedefinir()">Entrar</button>
+  </div>
+
+  <div class="container hidden" id="resetPage">
+    <h2>Redefinir Senha</h2>
+    <input type="password" id="novaSenha" placeholder="Nova senha">
+    <input type="password" id="confirmaSenha" placeholder="Confirmar senha">
+    <button onclick="redefinirSenha()">Salvar</button>
+  </div>
+
+  <div class="container hidden" id="successPage">
+    <h2>Senha atualizada!</h2>
+    <p class="success">Sua senha foi redefinida com sucesso.</p>
+  </div>
+
+  <script>
+    function irParaRedefinir() {
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('resetPage').classList.remove('hidden');
+    }
+
+    function redefinirSenha() {
+      const nova = document.getElementById('novaSenha').value;
+      const confirma = document.getElementById('confirmaSenha').value;
+
+      if (nova === "" || confirma === "") {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      if (nova !== confirma) {
+        alert("As senhas não coincidem.");
+        return;
+      }
+
+      document.getElementById('resetPage').classList.add('hidden');
+      document.getElementById('successPage').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
