@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal TechCorp Brasil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.6s ease;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #4facfe;
+    }
+    input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #333;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #4facfe;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00c6ff;
+    }
+    .message {
+      display: none;
+      margin-top: 15px;
+      font-size: 14px;
+      transition: opacity 0.5s;
+    }
+    .message.success { color: #4caf50; }
+    .message.error { color: #f44336; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+    <div class="password-wrapper">
+      <input type="password" id="senha" placeholder="Digite sua senha" required>
+      <span class="toggle-password" onclick="toggleSenha('senha')">👁️</span>
+    </div>
+    <button onclick="fazerLogin()">Entrar</button>
+    <div class="message" id="feedback"></div>
+  </div>
+
+  <div class="container" id="resetContainer" style="display:none;">
+    <h2>Redefinir Senha</h2>
+    <div class="password-wrapper">
+      <input type="password" id="novaSenha" placeholder="Nova senha" required>
+      <span class="toggle-password" onclick="toggleSenha('novaSenha')">👁️</span>
+    </div>
+    <div class="password-wrapper">
+      <input type="password" id="confirmarSenha" placeholder="Confirme a nova senha" required>
+      <span class="toggle-password" onclick="toggleSenha('confirmarSenha')">👁️</span>
+    </div>
+    <button onclick="redefinirSenha()">Confirmar</button>
+    <div class="message" id="feedbackReset"></div>
+  </div>
+
+  <script>
+    function mostrarMensagem(elemento, texto, tipo) {
+      elemento.textContent = texto;
+      elemento.className = `message ${tipo}`;
+      elemento.style.display = 'block';
+      elemento.style.opacity = '1';
+      setTimeout(() => {
+        elemento.style.opacity = '0';
+        setTimeout(() => { elemento.style.display = 'none'; }, 500);
+      }, 3000);
+    }
+
+    function validarEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function toggleSenha(id) {
+      const campo = document.getElementById(id);
+      campo.type = campo.type === "password" ? "text" : "password";
+    }
+
+    function validarForcaSenha(senha) {
+      const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+      return regex.test(senha);
+    }
+
+    function fazerLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const feedback = document.getElementById('feedback');
+
+      if (!validarEmail(email)) {
+        mostrarMensagem(feedback, 'Digite um e-mail válido!', 'error');
+      } else if (senha.length < 4) {
+        mostrarMensagem(feedback, 'Senha muito curta!', 'error');
+      } else {
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('resetContainer').style.display = 'block';
+      }
+    }
+
+    function redefinirSenha() {
+      const novaSenha = document.getElementById('novaSenha').value;
+      const confirmarSenha = document.getElementById('confirmarSenha').value;
+      const feedbackReset = document.getElementById('feedbackReset');
+
+      if (novaSenha !== confirmarSenha) {
+        mostrarMensagem(feedbackReset, 'As senhas não coincidem!', 'error');
+        return;
+      }
+      if (!validarForcaSenha(novaSenha)) {
+        mostrarMensagem(feedbackReset, 'A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula e 1 número!', 'error');
+        return;
+      }
+      mostrarMensagem(feedbackReset, 'Senha atualizada com sucesso!', 'success');
+    }
+  </script>
+</body>
+</html>
